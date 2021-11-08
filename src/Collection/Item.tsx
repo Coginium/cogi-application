@@ -1,7 +1,6 @@
-import { useRecoilState } from "recoil";
-import { selectedModelsAtom } from "../Collection";
-import useCollection from "../Data/Collection";
+import useCollection from "../Data/useCollection";
 import Model from "../Types/Model";
+import useSelectedModels from "./useSelectedModels";
 
 export interface ItemProps {
     model:Model
@@ -10,7 +9,7 @@ export interface ItemProps {
 export default function Item(props:ItemProps) {
 
     const { removeModel } = useCollection();
-    const [ checked, update ] = useRecoilState(selectedModelsAtom);
+    const { containsSelected, insertSelected, removeSelected } = useSelectedModels();
 
     function onRemove() {
 
@@ -21,15 +20,14 @@ export default function Item(props:ItemProps) {
 
         const target = event.target as HTMLInputElement;
 
-        if (target.checked === true) update([...checked, props.model.id ]);
-
-        else update(checked.filter((id:string) => id !== props.model.id));
+        if (target.checked === true) insertSelected([props.model]);
+        else removeSelected([props.model.id]);
     };
 
     return (
-        <div>
-            <input type="checkbox" onChange={onChange} checked={!!checked.find((id:string) => id === props.model.id)}/>
-            {props.model.name}
+        <div title={`Model: ${props.model.id}`}>
+            <input type="checkbox" onChange={onChange} checked={containsSelected(props.model.id)}/>
+            {props.model.name} ({props.model.status})
             <button onClick={onRemove}>Remove</button>
         </div>
     );

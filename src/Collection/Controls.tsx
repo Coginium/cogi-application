@@ -1,18 +1,15 @@
-import { useRecoilValue } from "recoil";
-import { selectedModelsAtom } from "../Collection";
-import useCollection from "../Data/Collection";
+import useCollection from "../Data/useCollection";
+import Model from "../Types/Model";
+import useSelectedModels from "./useSelectedModels";
 
 export default function Controls() {
 
-    const checked = useRecoilValue<Array<string>>(selectedModelsAtom);
-    const { fetchModels } = useCollection();
+    const { selected } = useSelectedModels();
+    const { fetchModels, upsertModels } = useCollection();
 
     function onStatusChange(status:string) {
-
-        const selected = fetchModels(checked);
-
-        // @todo make the actual change in state
-
+        
+        upsertModels(fetchModels(selected).map((m:Model) => Object.assign({ }, m, { status })));
     };
 
     return (

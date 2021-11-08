@@ -1,4 +1,4 @@
-import { useRecoilState, useRecoilValue } from "recoil";
+import { useRecoilState } from "recoil";
 import { modelsAtom } from "../App";
 import { v4 as uuidv4 } from 'uuid';
 import Model from "../Types/Model";
@@ -14,7 +14,7 @@ export default function useCollection() {
 
         if (!ids) return models;
 
-        const uniqueIds = new Set(...ids);
+        const uniqueIds = new Set(ids);
 
         return models.filter((m:Model) => uniqueIds.has(m.id));
     }
@@ -44,9 +44,30 @@ export default function useCollection() {
         update(models.concat(built));
     }
 
+    /**
+     *  Remove model.
+     */
     function removeModel(id:string) : void {
 
         const updated = models.filter((m:Model) => m.id !== id);
+
+        update(updated);
+    }
+
+    /**
+     *  Update existing models or insert new models.
+     */
+    function upsertModels(input:Array<Model>) {
+
+        const updated = [...models];
+
+        for (let m of input) {
+
+            const idx = updated.findIndex((s:Model) => s.id === m.id);
+
+            if (idx === -1) updated.push(m);
+            else updated.splice(idx, 1, m);
+        }
 
         update(updated);
     }
@@ -55,8 +76,7 @@ export default function useCollection() {
         fetchModel,
         fetchModels,
         buildModels,
+        upsertModels,
         removeModel
     };
 };
-
-

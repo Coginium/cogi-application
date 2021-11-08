@@ -1,4 +1,4 @@
-import useCollection from "../Data/Collection";
+import useCollection from "../Data/useCollection";
 import Model from "../Types/Model";
 import Item from "./Item";
 
