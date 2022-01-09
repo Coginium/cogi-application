@@ -1,28 +1,16 @@
-import { atom, RecoilRoot } from 'recoil';
-import { recoilPersist } from 'recoil-persist';
 import './App.css';
 import Collection from './Collection';
-import Model from './Types/Model';
-
-const { persistAtom } = recoilPersist({
-  key: 'collection',
-  storage: localStorage
-});
-
-export const modelsAtom = atom<Array<Model>>({
-  key: 'models',
-  default: [],
-  effects_UNSTABLE: [ persistAtom ]
-});
+import { Provider as ReduxProvider } from 'react-redux'; 
+import store from './Store';
 
 function App() {
   return (
-    <RecoilRoot>
-      <header>
-        Cogishpere
-      </header>
-      <Collection/>
-    </RecoilRoot>
+      <ReduxProvider store={store}>
+        <header>
+          Cogishpere
+        </header>
+        <Collection/>
+      </ReduxProvider>
   );
 }
 

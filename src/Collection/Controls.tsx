@@ -1,23 +1,26 @@
-import useCollection from "../Data/useCollection";
-import Model from "../Types/Model";
-import useSelectedModels from "./useSelectedModels";
+import { Model, ModelState } from "cogi-collectibles";
+import { useSelector } from "react-redux";
+import storeModels from "../Actions/storeModels";
+import { selectSelected } from "../Slices/selectedModels";
 
 export default function Controls() {
 
-    const { selected } = useSelectedModels();
-    const { fetchModels, upsertModels } = useCollection();
+    const selected = useSelector(selectSelected);
 
-    function onStatusChange(status:string) {
-        
-        upsertModels(fetchModels(selected).map((m:Model) => Object.assign({ }, m, { status })));
+    function updateModels(state:ModelState) {
+
+        storeModels(selected.map((model:Model) => Object.assign({ }, model, { state })));
     };
 
     return (
         <div>
-            <button onClick={() => onStatusChange('shame')}>Shame</button>
-            <button onClick={() => onStatusChange('assembled')}>Assembled</button> 
-            <button onClick={() => onStatusChange('painting')}>Painting</button>
-            <button onClick={() => onStatusChange('finished')}>Finished</button>
+            <button onClick={() => updateModels(ModelState.Unknown)}>Unknown</button>
+            <button onClick={() => updateModels(ModelState.Packaged)}>Packaged</button>
+            <button onClick={() => updateModels(ModelState.Assembled)}>Assembled</button>
+            <button onClick={() => updateModels(ModelState.Primed)}>Primed</button>
+            <button onClick={() => updateModels(ModelState.Painted)}>Painted</button>
+            <button onClick={() => updateModels(ModelState.Done)}>Done</button>
+            <button onClick={() => updateModels(ModelState.Broken)}>Broken</button>
         </div>
     );
 };

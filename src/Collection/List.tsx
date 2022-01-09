@@ -1,14 +1,20 @@
-import useCollection from "../Data/useCollection";
-import Model from "../Types/Model";
+import { Model } from 'cogi-collectibles';
+import { useEffect, useState } from 'react';
+import fetchModels from '../Actions/fetchModels';
 import Item from "./Item";
 
 export default function List() {
 
-    const { fetchModels } = useCollection();
+    const [ displayed, setDisplayed ] = useState<Array<Model>>([]);
+
+    useEffect(() => {
+
+        fetchModels().then((models:Array<Model>) => void setDisplayed(models));
+    });
 
     return (
         <div>
-            {fetchModels().map((m:Model) => <Item key={m.id} model={m}/>)}
+            {displayed.map((m:Model) => <Item key={m.id} model={m}/>)}
         </div>
     );
 };

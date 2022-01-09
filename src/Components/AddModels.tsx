@@ -1,9 +1,8 @@
+import { buildModels } from "cogi-collectibles";
 import { FormEvent } from "react";
-import useCollection from '../Data/useCollection';
+import storeModels from "../Actions/storeModels";
 
 export default function AddModels() {
-
-    const { buildModels } = useCollection();
 
     // submit handler for our form.
     const onSubmit = (e:FormEvent) => {
@@ -12,7 +11,7 @@ export default function AddModels() {
 
         const data = new FormData(e.target as HTMLFormElement);
 
-        buildModels(Number(data.get('count')?.toString()), { name: data.get('name')?.toString() || ''});
+        storeModels(buildModels(Number(data.get('count')?.toString()), data.get('name')?.toString() || ''));
     };
 
     return (
