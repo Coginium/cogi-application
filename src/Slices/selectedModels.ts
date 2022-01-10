@@ -5,21 +5,21 @@ import { RootState } from '../Store';
 type ClearReducer = CaseReducer<Array<Model>>;
 const clearReducer:ClearReducer = (state:Array<Model>) => [];
 
-type AddReducer = CaseReducer<Array<Model>, PayloadAction<Model>>;
-const addReducer:AddReducer = (state:Array<Model>, payload:PayloadAction<Model>) => {
+type AddReducer = CaseReducer<Array<Model>, PayloadAction<Model|Array<Model>>>;
+const addReducer:AddReducer = (state:Array<Model>, payload:PayloadAction<Model|Array<Model>>) : Array<Model> => {
 
-    // if the model already exists inside the selected,
-    // we just skip this action all together.
-    if (state.findIndex((value:Model) => value.id === payload.payload.id) > -1) return state;
-    
-    return [ ...state, payload.payload ];
-}
+    const input = Array.isArray(payload.payload) ?  payload.payload : [ payload.payload ];
+
+    const filtered = input.filter((m:Model) => state.findIndex((n:Model) => m.id === n.id) === -1);
+
+    return [ ...state, ...filtered ];
+};
 
 type RemoveReducer = CaseReducer<Array<Model>, PayloadAction<Model>>;
 const removeReducer:RemoveReducer = (state:Array<Model>, payload:PayloadAction<Model>) => {
 
     return state.filter((value:Model) => value.id !== payload.payload.id);
-}
+};
 
 const selectedModelsSlide = createSlice<Model[], SliceCaseReducers<Model[]>>({
     name: 'selectedModels',

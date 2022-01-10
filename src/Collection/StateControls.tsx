@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import storeModels from "../Actions/storeModels";
 import { selectSelected } from "../Slices/selectedModels";
 
-export default function Controls() {
+export default function StateControls() {
 
     const selected = useSelector(selectSelected);
 
