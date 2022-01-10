@@ -1,5 +1,6 @@
 import { Box } from "cogi-collectibles";
 import { useEffect, useState } from "react";
+import fetchCatalogue from "../Actions/fetchCatalogue";
 import Item from "./Item";
 
 export default function List() {
@@ -8,11 +9,7 @@ export default function List() {
 
     useEffect(() => {
 
-        import('cogi-catalogue-gw/space-marines-boxes.json').then((data:any) => {
-
-            const list = data.default as Array<Box>;
-            setCatalogue(list);
-        });
+        fetchCatalogue().then(setCatalogue);
     });
 
     return (
