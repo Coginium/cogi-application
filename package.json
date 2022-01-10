@@ -15,6 +15,7 @@
     "@types/react-redux": "^7.1.21",
     "@types/uuid": "^8.3.1",
     "cogi-409k": "github:Cogisphere/cogi-409k",
+    "cogi-catalogue-gw": "github:Cogisphere/cogi-catalogue-gw",
     "cogi-collectibles": "github:Cogisphere/cogi-collectibles",
     "lodash": "^4.17.21",
     "react": "^17.0.2",
