@@ -1,4 +1,4 @@
-import { Box, buildModels } from "cogi-collectibles";
+import { Box, buildModels, Model, ModelState } from "cogi-collectibles";
 import storeModels from "../Actions/storeModels";
 
 export interface ItemProps {
@@ -11,7 +11,7 @@ export default function Item(props:ItemProps) {
 
     function toCollection() {
 
-        storeModels(buildModels(box));
+        storeModels(buildModels(box).map((model:Model) => Object.assign<{ }, Model, Partial<Model>>({ }, model, { state: ModelState.Packaged }) ));
     };
 
     return (
