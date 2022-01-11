@@ -13,6 +13,7 @@
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
     "@types/react-redux": "^7.1.21",
+    "@types/react-router-dom": "^5.3.2",
     "@types/uuid": "^8.3.1",
     "cogi-409k": "github:Cogisphere/cogi-409k",
     "cogi-catalogue-gw": "github:Cogisphere/cogi-catalogue-gw",
@@ -21,6 +22,7 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-redux": "^7.2.6",
+    "react-router-dom": "^6.2.1",
     "react-scripts": "4.0.3",
     "typescript": "^4.1.2",
     "web-vitals": "^1.0.1"

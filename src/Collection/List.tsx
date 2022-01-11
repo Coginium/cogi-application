@@ -10,7 +10,7 @@ export default function List() {
     useEffect(() => {
 
         fetchModels().then((models:Array<Model>) => void setDisplayed(models));
-    });
+    }, [ ]);
 
     return (
         <div>
