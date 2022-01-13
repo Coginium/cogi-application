@@ -1,0 +1,14 @@
+/*
+ *  This is a class that is applied on main elements of the application
+ *  that hold the actual content of the application. We use this class
+ *  to make sure that main containers have consistent size.
+ */
+.maincontainer
+{
+    width:          var(--main-width);
+    max-width:      var(--main-width-max);
+
+    margin:         0 auto;
+
+    transition:     width .1s;
+}

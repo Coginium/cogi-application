@@ -15,7 +15,7 @@ export default function Item(props:ItemProps) {
     };
 
     return (
-        <div>
+        <div className="card">
             <div>Name: {box.name}</div>
             <div>Availability: {box.availability}</div>
             <div>Models count: {box.models.length}</div> 

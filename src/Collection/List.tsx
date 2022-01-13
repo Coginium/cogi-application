@@ -13,7 +13,7 @@ export default function List() {
     }, [ ]);
 
     return (
-        <div>
+        <div className="cards cards-grid">
             {displayed.map((m:Model) => <Item key={m.id} model={m}/>)}
         </div>
     );

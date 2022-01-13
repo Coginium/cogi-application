@@ -16,7 +16,7 @@ export default function List() {
     }, [ ]);
 
     return (
-        <div>
+        <div className="cards cards-grid">
             {catalogue.map((b:Box) => (<Item key={b.id} box={b}/> ))}
         </div>
     );

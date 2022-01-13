@@ -1,0 +1,16 @@
+.cards.cards-list
+{
+    display:        grid;
+    grid-auto-flow: row;
+    gap:            1rem;
+    margin:         1rem 0;
+}
+
+.cards.cards-grid
+{
+    display:        grid;
+    grid-auto-flow: row;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap:            1rem;
+    margin:         1rem 0;
+}

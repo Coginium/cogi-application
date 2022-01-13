@@ -26,7 +26,7 @@ export default function Item(props:ItemProps) {
     };
 
     return (
-        <div title={`Model: ${props.model.id}`}>
+        <div className="card" title={`Model: ${props.model.id}`}>
             <input type="checkbox" onChange={onChange} checked={selected.findIndex((model:Model) => props.model.id === model.id) > -1}/>
             {props.model.name} ({props.model.state})
             <button onClick={onRemove}>Remove</button>

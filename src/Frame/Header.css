@@ -1,19 +1,23 @@
 .frame-header
 {
-    width:          100%;
-    border-bottom:  1px solid lightblue;
     padding:        .25rem 1rem;
 
     display:        grid;
-    grid-template-columns: min-content;
-    grid-auto-flow: column;
+    grid-template-columns: auto min-content;
     align-items:    baseline;
     gap:            3rem;
+
+    position:       sticky;
+    top:            0;
+
+    background:     var(--main-background);
 }
 
 .frame-header > h1
 {
     margin:         0;
+    font-size:      1em;
+    font-weight:    normal;
 }
 
 .frame-header > nav
@@ -23,9 +27,4 @@
     grid-auto-columns: min-content;
     align-items:    center;
     gap:            1rem;
-}
-
-.frame-header > nav > a
-{
-    text-decoration: none;
 }

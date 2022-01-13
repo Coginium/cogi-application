@@ -1,3 +1,4 @@
+import './Styles.css';
 import './App.css';
 import Collection from './Collection';
 import { Provider as ReduxProvider } from 'react-redux'; 
