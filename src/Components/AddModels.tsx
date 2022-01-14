@@ -1,6 +1,6 @@
 import { buildModels } from "cogi-collectibles";
 import { FormEvent } from "react";
-import storeModels from "../Actions/storeModels";
+import storeModels from "../Storage/storeModels";
 
 export default function AddModels() {
 

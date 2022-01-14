@@ -6,8 +6,7 @@ export default function wrapIDBRequest(request:IDBRequest) : Promise<IDBRequest>
 
     return new Promise((resolve:(request:IDBRequest) => void, reject: () => void) => {
 
-        request.onsuccess = () => void resolve(request);
-        
-        request.onerror = reject;
+        request.addEventListener('success', () => void resolve(request));
+        request.addEventListener('error', () => void reject());
     });
 };

@@ -1,6 +1,6 @@
 import { Model } from 'cogi-collectibles';
 import { useDispatch, useSelector } from 'react-redux';
-import deleteModel from '../Actions/deleteModel';
+import deleteModel from '../Storage/deleteModel';
 import { selectSelected } from '../Slices/selectedModels';
 
 export interface ItemProps {

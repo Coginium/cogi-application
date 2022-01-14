@@ -1,13 +1,10 @@
 import { Model } from "cogi-collectibles";
 import wrapIDBRequest from "../Utils/wrapIDBRequest";
-import openDatabase from "./openDatabase";
+import openObjectStore from "./openObjectStore";
 
 export default function deleteModel(model:Model) : Promise<void> {
 
-    return openDatabase().then((database:IDBDatabase) => {
-
-        const transaction = database.transaction([ 'models' ], "readwrite");
-        const objectStore = transaction.objectStore('models');
+    return openObjectStore('models', 'readwrite').then((objectStore:IDBObjectStore) => {
 
         const request = objectStore.delete(model.id);
 

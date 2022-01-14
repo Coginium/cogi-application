@@ -1,6 +1,6 @@
 import { Model, ModelState } from "cogi-collectibles";
 import { useSelector } from "react-redux";
-import storeModels from "../Actions/storeModels";
+import storeModels from "../Storage/storeModels";
 import { selectSelected } from "../Slices/selectedModels";
 
 export default function StateControls() {

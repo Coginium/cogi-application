@@ -1,6 +1,6 @@
 import { Model } from "cogi-collectibles";
 import { useDispatch } from "react-redux";
-import fetchModels from "../Actions/fetchModels";
+import fetchModels from "../Storage/fetchModels";
 
 /**
  *  A component to manipulate current selection of models.

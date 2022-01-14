@@ -7,6 +7,7 @@ import SelectionControls from "./Collection/SelectionControls";
  *  A component to show the view to manage the entire collection.
  */
 export default function Collection() {
+
     return (
         <div className="maincontainer">
             <AddModels/>
@@ -14,5 +15,5 @@ export default function Collection() {
             <SelectionControls/>
             <List/>
         </div>
-    )
+    );
 };

@@ -6,8 +6,7 @@ export default function wrapIDBTransaction(transaction:IDBTransaction) : Promise
 
     return new Promise((resolve:(result:IDBTransaction) => void, reject:() => void) => {
 
-        transaction.oncomplete = (ev:any) => void resolve(ev.target);
-        
-        transaction.onerror = reject;
+        transaction.addEventListener('complete', (ev:any) => void resolve(ev.target));
+        transaction.addEventListener('error', () => void reject());
     });
 };

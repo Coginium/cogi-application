@@ -1,6 +1,6 @@
 import { Box } from "cogi-collectibles";
 import { useEffect, useState } from "react";
-import fetchCatalogue from "../Actions/fetchCatalogue";
+import fetchCatalogue from "../Storage/fetchCatalogue";
 import Item from "./Item";
 
 /**

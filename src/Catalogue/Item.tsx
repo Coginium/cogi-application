@@ -1,5 +1,5 @@
 import { Box, buildModels, Model, ModelState } from "cogi-collectibles";
-import storeModels from "../Actions/storeModels";
+import storeModels from "../Storage/storeModels";
 
 export interface ItemProps {
     box:Box;

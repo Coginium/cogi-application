@@ -1,14 +1,13 @@
 import { Model } from "cogi-collectibles";
 import wrapIDBRequest from "../Utils/wrapIDBRequest";
-import openDatabase from "./openDatabase";
+import openObjectStore from "./openObjectStore";
 
 
 export default function fetchModels() : Promise<Array<Model>> {
 
-    return openDatabase().then((database:IDBDatabase) => { 
+    return openObjectStore('models', 'readonly').then((objectStore:IDBObjectStore) => { 
 
-        const transaction = database.transaction([ 'models' ], "readonly");
-        const request = transaction.objectStore('models').getAll();
+        const request = objectStore.getAll();
 
         return wrapIDBRequest(request).then((request:IDBRequest) => request.result);
     });
