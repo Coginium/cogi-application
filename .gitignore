@@ -1,1 +1,7 @@
+# the node modules. No need to store them in the repo
 node_modules
+
+# the cypress output
+cypress/screenshots
+cypress/support
+cypress/videos

@@ -30,7 +30,8 @@
   "scripts": {
     "start": "set PORT=3001 && react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "cypress run-ct",
+    "open-test": "cypress open-ct",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -50,5 +51,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@cypress/react": "^5.12.1",
+    "@cypress/webpack-dev-server": "^1.8.0",
+    "cypress": "^9.2.1"
   }
 }
