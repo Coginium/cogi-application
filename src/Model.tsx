@@ -21,13 +21,15 @@ export default function Model() {
 
         const formData = new FormData(formRef.current);
 
-        storeImage(formData.get('image') as Blob, model.id);
-
         const newModel = Object.assign({ }, model, { 
-            name: formData.get('name')
+            name:   formData.get('name'),
+            notes:  formData.get('notes')
         });
 
         setModel(newModel);
+
+        const image = formData.get('image');
+        if (image) storeImage(formData.get('image') as Blob, model.id);
 
     }, [ model, setModel, formRef ]);
 
@@ -37,6 +39,7 @@ export default function Model() {
                 <Controls model={model}/>
                 <HeaderInput name="name" defaultValue={model.name}/>
                 <input type="file" name="image" accept="image/png, image/jpeg" />
+                <textarea name="notes" defaultValue={model.notes}/>
             </>)}
         </form>
     );

@@ -7,7 +7,7 @@ import storeModel from "../Storage/storeModel";
 
 export default function useModel(initial:Model|string) {
 
-    const [ model, setModel ] = useState<Model|null>(typeof(initial) === 'object' ? initial : null);
+    const [ model, setModel ] = useState<Model|null|undefined>(typeof(initial) === 'object' ? initial : undefined);
 
     const id = typeof(initial) === 'object' ? initial.id : initial;
 
@@ -15,7 +15,7 @@ export default function useModel(initial:Model|string) {
 
         let isMounted = true;
 
-        fetchModel(id).then((model:Model) => { isMounted && setModel(model); });
+        if (model === undefined) fetchModel(id).then((model:Model) => { isMounted && setModel(model); });
 
         return () => { isMounted = false; console.log('unmount model effect', id); }
 
@@ -23,7 +23,7 @@ export default function useModel(initial:Model|string) {
 
     useEffect(() => {
 
-        const cancelListener = listen('models', () => { setModel(null); });
+        const cancelListener = listen('models', () => { setModel(undefined); });
 
         return () => cancelListener();
     }, []);
@@ -38,7 +38,7 @@ export default function useModel(initial:Model|string) {
     }
 
     return {
-        model,
+        model: model || null,
         removeModel: remove,
         setModel: update
     };
