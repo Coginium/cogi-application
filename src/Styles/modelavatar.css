@@ -1,0 +1,14 @@
+
+.modelavatar
+{
+    width:  200px;
+    height: 400px;
+
+    object-fit: cover;
+}
+
+.modelavatar-small
+{
+    width:  120px;
+    height: 240px;
+}

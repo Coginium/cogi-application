@@ -7,18 +7,25 @@ export default function openDatabase() : Promise<IDBDatabase> {
 
     return new Promise((resolve:(database:IDBDatabase) => void, reject:() => void) => {
 
-        const request = indexedDB.open('collection', 1);
-
-        request.onupgradeneeded = function(event:any) { setupModels(event.target.result as IDBDatabase); }
+        const request = indexedDB.open('collection', 2);
+        
         request.onsuccess = function(event:any) { resolve(event.target.result); }
         request.onerror = function() { reject(); }
+
+        request.onupgradeneeded = function(event:any) {
+
+            const database = event.target.result as IDBDatabase;
+
+            setupModels(database);
+            setupImages(database);
+        }
     });
 };
 
 /**
  *  A helper function to setup the models collection.
  */
- function setupModels(database:IDBDatabase) : Promise<void> {
+function setupModels(database:IDBDatabase) : Promise<void> {
 
     return new Promise((resolve:() => void, reject:() => void) => {
         
@@ -28,5 +35,18 @@ export default function openDatabase() : Promise<IDBDatabase> {
 
         models.transaction.oncomplete = () => resolve();
         models.transaction.onerror = () => reject();
+    });
+};
+
+function setupImages(database:IDBDatabase) : Promise<void> {
+
+    return new Promise((resolve:() => void, reject:() => void) => {
+
+        const images = database.createObjectStore('images');
+
+        images.createIndex('id', 'id', { unique: true });
+
+        images.transaction.oncomplete = resolve;
+        images.transaction.onerror = reject;
     });
 };

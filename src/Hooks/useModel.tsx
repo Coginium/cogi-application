@@ -15,15 +15,15 @@ export default function useModel(initial:Model|string) {
 
         let isMounted = true;
 
-        fetchModel(id).then((model:Model) => setModel(model));
+        fetchModel(id).then((model:Model) => { isMounted && setModel(model); });
 
-        return () => { isMounted = false; }
+        return () => { isMounted = false; console.log('unmount model effect', id); }
 
-    }, [ model, setModel ]);
+    }, [ model, setModel, id ]);
 
     useEffect(() => {
 
-        const cancelListener = listen('models', () => { setModel(null)});
+        const cancelListener = listen('models', () => { setModel(null); });
 
         return () => cancelListener();
     }, []);
