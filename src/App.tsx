@@ -6,6 +6,7 @@ import store from './Store';
 import Catalogue from './Catalogue';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Frame from './Frame';
+import Model from './Model';
 
 function App() {
   return (
@@ -14,7 +15,8 @@ function App() {
           <Routes>
             <Route path="/" element={<Frame/>}>
               <Route path="catalogue" element={<Catalogue/>}/>
-              <Route path="collection" element={<Collection/>}/>
+              <Route path="collection" element={<Collection/>}/>              
+              <Route path="model/:model" element={<Model/>}/>
             </Route>
           </Routes>
         </BrowserRouter>

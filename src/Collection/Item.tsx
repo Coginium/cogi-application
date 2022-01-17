@@ -2,6 +2,7 @@ import { Model } from 'cogi-collectibles';
 import { useDispatch, useSelector } from 'react-redux';
 import deleteModel from '../Storage/deleteModel';
 import { selectSelected } from '../Slices/selectedModels';
+import { Link } from 'react-router-dom';
 
 export interface ItemProps {
     model:Model
@@ -28,7 +29,7 @@ export default function Item(props:ItemProps) {
     return (
         <div className="card" title={`Model: ${props.model.id}`}>
             <input type="checkbox" onChange={onChange} checked={selected.findIndex((model:Model) => props.model.id === model.id) > -1}/>
-            {props.model.name} ({props.model.state})
+            <Link to={`/model/${props.model.id}`}>{props.model.name}</Link> ({props.model.state})
             <button onClick={onRemove}>Remove</button>
         </div>
     );

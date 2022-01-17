@@ -1,7 +1,42 @@
 import { mount } from '@cypress/react';
+import { MemoryRouter } from 'react-router-dom';
 import Header from './Header';
 
-it('renders learn react link', () => {
-  mount(<Header />);
-  cy.get('h1').contains('Cogisphere');
+it('it should show the title of the application', () => {
+  mount(
+    <MemoryRouter 
+        initialEntries={["/"]}
+        initialIndex={0}
+    >
+    <Header />
+    </MemoryRouter>
+  );
+  
+  cy.get('h1').contains('Cogishpere');
+});
+
+it('it should highligh collection when in /collection', () => {
+    mount(
+      <MemoryRouter 
+          initialEntries={["/collection"]}
+          initialIndex={0}
+      >
+      <Header />
+      </MemoryRouter>
+    );
+    
+    cy.get('a.active').should('have.attr', 'href', '/collection');
+});
+
+it('it should highligh catalogue when in /catalogue', () => {
+    mount(
+      <MemoryRouter 
+          initialEntries={["/catalogue"]}
+          initialIndex={0}
+      >
+      <Header />
+      </MemoryRouter>
+    );
+    
+    cy.get('a.active').should('have.attr', 'href', '/catalogue');
 });
