@@ -1,0 +1,24 @@
+.card
+{
+    border-top:     1px solid black;
+    border-left:    1px solid black;
+
+    padding-left:   4px;
+    padding-top:    16px;
+}
+
+.card-title
+{
+    padding-bottom: 4px;
+    border-bottom:  1px solid black;
+    
+    width:          calc(100% - 32px);
+}
+
+
+.card-title > a,
+.card-title > span
+{
+    text-decoration:    none;
+    color:          black;
+}

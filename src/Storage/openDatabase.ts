@@ -16,8 +16,10 @@ export default function openDatabase() : Promise<IDBDatabase> {
 
             const database = event.target.result as IDBDatabase;
 
-            setupModels(database);
-            setupImages(database);
+            const stores = database.objectStoreNames;
+
+            if (!stores.contains('models')) setupModels(database);
+            if (!stores.contains('images')) setupImages(database);
         }
     });
 };

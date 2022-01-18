@@ -1,0 +1,14 @@
+.frame-snacknotification
+{
+    position:   fixed;
+
+    bottom:     1rem;
+    right:      1rem;
+
+    max-width:  28em;
+
+    background: white;
+    border:     1px solid black;
+
+    padding:    .1rem .25rem;
+}
