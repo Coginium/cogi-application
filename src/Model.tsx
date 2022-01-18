@@ -1,5 +1,6 @@
 import { FormEvent, useCallback, useRef } from "react";
 import { useParams } from "react-router-dom";
+import Field from "./Components/Field";
 import HeaderInput from "./Components/HeaderInput";
 import useModel from "./Hooks/useModel";
 import Controls from "./Model/Controls";
@@ -28,8 +29,8 @@ export default function Model() {
 
         setModel(newModel);
 
-        const image = formData.get('image');
-        if (image) storeImage(formData.get('image') as Blob, model.id);
+        const image = formData.get('image') as Blob;
+        if (image.size > 0) storeImage(image, model.id);
 
     }, [ model, setModel, formRef ]);
 
@@ -37,9 +38,15 @@ export default function Model() {
         <form ref={formRef} className="maincontainer" onSubmit={onStore}>
             {model && (<>
                 <Controls model={model}/>
-                <HeaderInput name="name" defaultValue={model.name}/>
-                <input type="file" name="image" accept="image/png, image/jpeg" />
-                <textarea name="notes" defaultValue={model.notes}/>
+                <Field label="Model name">
+                    <HeaderInput name="name" defaultValue={model.name}/>
+                </Field> 
+                <Field label="Image">
+                    <input type="file" name="image" accept="image/png, image/jpeg" />
+                </Field>
+                <Field label="Notes">
+                    <textarea name="notes" defaultValue={model.notes}/>
+                </Field>
             </>)}
         </form>
     );

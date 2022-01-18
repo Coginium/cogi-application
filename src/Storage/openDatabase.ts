@@ -14,11 +14,13 @@ export default function openDatabase() : Promise<IDBDatabase> {
 
         request.onupgradeneeded = function(event:any) {
 
+            console.log('onupgrade');
+
             const database = event.target.result as IDBDatabase;
 
-            setupModels(database);
-            setupImages(database);
-        }
+            if (!('models' in database.objectStoreNames)) setupModels(database);
+            if (!('images' in database.objectStoreNames)) setupImages(database);
+        };
     });
 };
 

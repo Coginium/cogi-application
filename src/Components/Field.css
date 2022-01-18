@@ -1,0 +1,19 @@
+.field
+{
+    display:    grid;
+    grid-template-rows: auto auto;
+    gap:        .25rem;
+
+    margin:     1em 0;
+}
+
+.field > .field-label
+{
+    font-size:  .75em;
+}
+
+.field > .field-content > textarea
+{
+    display:    block;
+    width:      100%;
+}
