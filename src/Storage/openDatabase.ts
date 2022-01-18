@@ -20,6 +20,11 @@ export default function openDatabase() : Promise<IDBDatabase> {
 
             if (!('models' in database.objectStoreNames)) setupModels(database);
             if (!('images' in database.objectStoreNames)) setupImages(database);
+            
+            const stores = database.objectStoreNames;
+
+            if (!stores.contains('models')) setupModels(database);
+            if (!stores.contains('images')) setupImages(database);
         };
     });
 };
