@@ -12,6 +12,23 @@
    *  The main background color of the application.
    */
   --main-background: white;
+
+  /*
+   *  Most of the application has some sorts of an accent color that defines
+   *  the main color. This color sometimes changes when we are in specific
+   *  context (for example, it might change when looking at a ultramarines
+   *  model to ultramarine blue).
+   */
+  --border-accent:    #2F2F2F;
+  --control-accent:   #2f2f2f;
+
+  --model-state-unknown:    #9B97B2;
+  --model-state-packaged:   #AE8CA3;
+  --model-state-assembled:  #B6465F;
+  --model-state-primed:     #FF570A;
+  --model-state-painted:    #028090;
+  --model-state-done:       #80AB82;
+  --model-state-broken:     #D72638;
 }
 
 @media screen and (min-width: 1000px)

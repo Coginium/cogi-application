@@ -2,6 +2,19 @@ import { ReactNode } from "react";
 import { Link } from "react-router-dom";
 import './Card.css';
 
+export interface CardBadgeProps {
+
+    /**
+     *  The text of the badge that should be displayed with the card
+     */
+    text:string;
+
+    /**
+     *  The color of the badge that should be used.
+     */
+    color:string;
+};
+
 export interface CardProps {
 
     /**
@@ -37,10 +50,16 @@ export interface CardProps {
     image?:string;
 
     /**
+     *  An array of possible badges for the item.
+     */
+    badges?:Array<CardBadgeProps>;
+
+    /**
      *  The content of the card.
      */
     children:ReactNode;
 };
+
 /**
  *  This is a component that holds a card of a thing. This is mainly a layout element with
  *  some decorations around it. This component should be used when we deal with a list of
@@ -69,13 +88,16 @@ export default function Card(props:CardProps) {
 
     return (
         <div className="card">
-            {props.image && (<img src={props.image} alt=''/>)}
+            {props.image && (<img className="card-image" src={props.image} alt=''/>)}
             <div className="card-title">
                 {selectable && (<input type="checkbox" onChange={onCheckboxChange} checked={props.selected || false}/>)}
                 {props.url && (<Link to={props.url}>{props.title}</Link> )}
                 {!props.url && (<span>{props.title}</span>)}
             </div>
             <div>
+                {props.badges && (<div>
+                    {props.badges.map((badge:CardBadgeProps) => (<span className="card-badge" style={{ backgroundColor: badge.color }}>{badge.text}</span>))}
+                </div>)}
                 {props.children}
             </div>
         </div>

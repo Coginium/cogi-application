@@ -1,0 +1,16 @@
+button
+{
+    background:     var(--control-accent);
+    color:          white;
+    border:         1px solid var(--control-accent);   
+    font-weight:    bold;
+}
+
+
+.button-unknown     { border-color: var(--model-state-unknown); background: var(--model-state-unknown); }
+.button-packaged    { border-color: var(--model-state-packaged); background: var(--model-state-packaged); }
+.button-assembled   { border-color: var(--model-state-assembled); background: var(--model-state-assembled); }
+.button-primed      { border-color: var(--model-state-primed); background: var(--model-state-primed); }
+.button-painted     { border-color: var(--model-state-painted); background: var(--model-state-painted); }
+.button-done        { border-color: var(--model-state-done); background: var(--model-state-done); }
+.button-broken      { border-color: var(--model-state-broken); background: var(--model-state-broken); }

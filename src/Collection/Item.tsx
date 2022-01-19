@@ -1,6 +1,5 @@
 import { Model } from 'cogi-collectibles';
 import { useDispatch, useSelector } from 'react-redux';
-import deleteModel from '../Storage/deleteModel';
 import { selectSelected } from '../Slices/selectedModels';
 import useImage from '../Hooks/useImage';
 import Card from '../Components/Card';
@@ -16,16 +15,15 @@ export default function Item(props:ItemProps) {
 
     const { image } = useImage(props.model);
 
-    function onRemove() {
-
-        deleteModel(props.model);
-    };
-
     function onChange(checked:boolean) {
 
         if (checked === true) dispatch({ type: 'selectedModels/add', payload: props.model });
         else dispatch({ type: 'selectedModels/remove', payload: props.model });
     };
+
+    const badges = [
+        { text: props.model.state, color: `var(--model-state-${props.model.state})` }
+    ];
 
     return (
         <Card 
@@ -35,8 +33,8 @@ export default function Item(props:ItemProps) {
             onSelectChange={onChange}
             selected={!!selected.find((m:Model) => m.id === props.model.id)}
             image={image || ''}
+            badges={badges}
         >
-            <button onClick={onRemove}>Remove</button>
         </Card>
     );
 };

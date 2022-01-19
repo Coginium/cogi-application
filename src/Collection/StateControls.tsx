@@ -14,13 +14,13 @@ export default function StateControls() {
 
     return (
         <div>
-            <button onClick={() => updateModels(ModelState.Unknown)}>Unknown</button>
-            <button onClick={() => updateModels(ModelState.Packaged)}>Packaged</button>
-            <button onClick={() => updateModels(ModelState.Assembled)}>Assembled</button>
-            <button onClick={() => updateModels(ModelState.Primed)}>Primed</button>
-            <button onClick={() => updateModels(ModelState.Painted)}>Painted</button>
-            <button onClick={() => updateModels(ModelState.Done)}>Done</button>
-            <button onClick={() => updateModels(ModelState.Broken)}>Broken</button>
+            <button className="button-unknown" onClick={() => updateModels(ModelState.Unknown)}>Unknown</button>
+            <button className="button-packaged" onClick={() => updateModels(ModelState.Packaged)}>Packaged</button>
+            <button className="button-assembled" onClick={() => updateModels(ModelState.Assembled)}>Assembled</button>
+            <button className="button-primed" onClick={() => updateModels(ModelState.Primed)}>Primed</button>
+            <button className="button-painted" onClick={() => updateModels(ModelState.Painted)}>Painted</button>
+            <button className="button-done" onClick={() => updateModels(ModelState.Done)}>Done</button>
+            <button className="button-broken" onClick={() => updateModels(ModelState.Broken)}>Broken</button>
         </div>
     );
 };
