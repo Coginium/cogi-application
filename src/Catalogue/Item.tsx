@@ -1,7 +1,6 @@
-import { Box, buildModels, Model, ModelState } from "cogi-collectibles";
+import { Box } from "cogi-collectibles";
 import { Link } from "react-router-dom";
 import Card from "../Components/Card";
-import storeModels from "../Storage/storeModels";
 
 export interface ItemProps {
     box:Box;
@@ -10,11 +9,6 @@ export interface ItemProps {
 export default function Item(props:ItemProps) {
 
     const box = props.box;
-
-    function toCollection() {
-
-        storeModels(buildModels(box).map((model:Model) => Object.assign<{ }, Model, Partial<Model>>({ }, model, { state: ModelState.Packaged }) ));
-    };
 
     const badges = [
         { text: box.availability, color: 'black' },

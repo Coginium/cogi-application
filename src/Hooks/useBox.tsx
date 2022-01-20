@@ -2,6 +2,9 @@ import { Box } from "cogi-collectibles";
 import { useEffect, useState } from "react";
 import fetchBox from "../Storage/fetchBox()";
 
+/**
+ *  A custom hook to load a box.
+ */
 export default function useBox(id:string) {
 
     const [ box, setBox ] = useState<Box|undefined>();
@@ -14,7 +17,7 @@ export default function useBox(id:string) {
 
         return () => { isMounted = false; };
 
-    }, [ box, setBox ]);
+    }, [ box, setBox, id  ]);
 
     return {
         box

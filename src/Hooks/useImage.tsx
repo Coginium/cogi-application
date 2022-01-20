@@ -2,6 +2,9 @@ import { Model } from "cogi-collectibles";
 import { useEffect, useState } from "react";
 import fetchImage from "../Storage/fetchImage";
 
+/**
+ *  A custom hook to load a specific image.
+ */
 export default function useImage(source:Model) {
 
     const [ image, setImage ] = useState<string|null|undefined>(undefined);

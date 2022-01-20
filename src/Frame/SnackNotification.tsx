@@ -1,4 +1,4 @@
-import useStorageManager from "../Hooks/useStrageManager";
+import useStorageManager from "../Hooks/useStorageManager";
 import './SnackNotification.css';
 /**
  *  This is a component that shown notifications in a "snack" form.
@@ -8,8 +8,6 @@ import './SnackNotification.css';
 export default function SnackNotification() {
 
     const { persisted } = useStorageManager();
-
-    console.log(persisted);
 
     return (
         <>

@@ -5,6 +5,11 @@ import { listen } from "../Storage/exchange";
 import fetchModel from "../Storage/fetchModel";
 import storeModel from "../Storage/storeModel";
 
+/**
+ *  A custom hook to load a specific model based on model object or string.
+ * 
+ *  The hook offers the model as well as functions to update or remove the model.
+ */
 export default function useModel(initial:Model|string) {
 
     const [ model, setModel ] = useState<Model|null|undefined>(typeof(initial) === 'object' ? initial : undefined);
