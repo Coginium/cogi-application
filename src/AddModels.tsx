@@ -1,4 +1,4 @@
-import { buildModels } from "cogi-collectibles";
+import { buildModels, PossibleModel } from "cogi-collectibles";
 import { FormEvent } from "react";
 import { useParams } from "react-router-dom";
 import ModelDefinition from "./AddModels/ModelDefinition";
@@ -18,6 +18,8 @@ export default function AddModels() {
 
         const data = new FormData(e.target as HTMLFormElement);
 
+        console.log(data.getAll('model'));
+
         // storeModels(buildModels(Number(data.get('count')?.toString()), data.get('name')?.toString() || ''));
     };
 
@@ -28,8 +30,7 @@ export default function AddModels() {
             </h1>
             <form onSubmit={onSubmit}>
 
-                <ModelDefinition/>
-                <ModelDefinition/>
+                {box && box.models.map((p:PossibleModel, idx:number) => (<ModelDefinition key={idx} model={p}/>))}
                 <button>Add</button>
             </form>
         </div>
