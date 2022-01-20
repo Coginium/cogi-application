@@ -1,16 +1,19 @@
 .card
 {
-    border-top:     1px solid var(--border-accent);
-    border-left:    1px solid var(--border-accent);
+    border-top:     2px solid var(--border-accent);
+    border-left:    2px solid var(--border-accent);
 
     padding-left:   4px;
-    /* padding-top:    16px; */
 
     display:        grid;
-    grid-template-columns: min-content auto;
     grid-template-rows: 1.5em;
 
     gap:            8px;
+}
+
+.card.card-withside
+{
+    grid-template-columns: min-content auto;
 }
 
 .card-title
@@ -24,8 +27,13 @@
 
     text-transform: uppercase;
 
-    margin-left:    -8px;
+    margin-left:    -4px;
     padding-left:   4px;
+}
+
+.card.card-withside .card-title
+{
+    margin-left:    -8px;
 }
 
 .card-title > a,
@@ -42,19 +50,12 @@
 
     object-fit:     cover;
 
-    border:         1px solid var(--border-accent);
+    border:         2px solid var(--border-accent);
 
     grid-row:       span 2;
 
     margin-top:     -8px;
     margin-bottom:  -8px;
-}
 
-.card-badge
-{
-    display:        inline-block;
-    padding:        2px 4px;
-    font-size:      .75em;
-    color:          white;
-    font-weight:    bold;
+    background:     white;
 }

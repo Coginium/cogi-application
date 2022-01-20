@@ -7,6 +7,7 @@ import Catalogue from './Catalogue';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Frame from './Frame';
 import Model from './Model';
+import AddModels from './AddModels';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
               <Route path="catalogue" element={<Catalogue/>}/>
               <Route path="collection" element={<Collection/>}/>              
               <Route path="model/:model" element={<Model/>}/>
+              <Route path="new-model/:type/:id" element={<AddModels/>}/>
             </Route>
           </Routes>
         </BrowserRouter>

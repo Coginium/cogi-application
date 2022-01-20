@@ -1,0 +1,7 @@
+.collection-toolbar
+{
+    margin:         32px 0;
+    display:        grid;
+    grid-template-columns: max-content auto max-content;
+    gap:            32px;
+}

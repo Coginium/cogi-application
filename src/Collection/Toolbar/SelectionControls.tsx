@@ -1,6 +1,6 @@
 import { Model } from "cogi-collectibles";
 import { useDispatch } from "react-redux";
-import fetchModels from "../Storage/fetchModels";
+import fetchModels from "../../Storage/fetchModels";
 
 /**
  *  A component to manipulate current selection of models.
@@ -23,7 +23,7 @@ export default function SelectionControls() {
     };
 
     return (
-        <div>
+        <div className="buttonsrow">
             <button onClick={unselect}>Unselect</button>
             <button onClick={selectAll}>Select all</button>
         </div>

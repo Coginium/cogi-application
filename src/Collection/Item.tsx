@@ -3,11 +3,15 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectSelected } from '../Slices/selectedModels';
 import useImage from '../Hooks/useImage';
 import Card from '../Components/Card';
+import NoImage from './Item-noimage.svg';
 
 export interface ItemProps {
     model:Model
 };
 
+/**
+ *  This is a component showing a single model in the collection. 
+ */
 export default function Item(props:ItemProps) {
 
     const selected = useSelector(selectSelected);
@@ -32,7 +36,7 @@ export default function Item(props:ItemProps) {
             selectable={true}
             onSelectChange={onChange}
             selected={!!selected.find((m:Model) => m.id === props.model.id)}
-            image={image || ''}
+            image={image || NoImage}
             badges={badges}
         >
         </Card>

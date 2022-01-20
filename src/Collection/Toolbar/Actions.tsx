@@ -1,7 +1,7 @@
 import { Model } from "cogi-collectibles";
 import { useDispatch, useSelector } from "react-redux";
-import { selectSelected } from "../Slices/selectedModels";
-import deleteModel from "../Storage/deleteModel";
+import { selectSelected } from "../../Slices/selectedModels";
+import deleteModel from "../../Storage/deleteModel";
 
 /**
  *  This is a component responsible for grouping actions that can
@@ -20,7 +20,7 @@ export default function Actions() {
     };
 
     return (
-        <div>
+        <div className="buttonsrow">
             <button disabled={selected.length > 0} onClick={removeModels}>Remove</button>
         </div>
     );

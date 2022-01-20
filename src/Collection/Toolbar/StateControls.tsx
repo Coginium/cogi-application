@@ -1,8 +1,11 @@
 import { Model, ModelState } from "cogi-collectibles";
 import { useSelector } from "react-redux";
-import storeModels from "../Storage/storeModels";
-import { selectSelected } from "../Slices/selectedModels";
+import storeModels from "../../Storage/storeModels";
+import { selectSelected } from "../../Slices/selectedModels";
 
+/**
+ *  A component to change state of models
+ */
 export default function StateControls() {
 
     const selected = useSelector(selectSelected);
@@ -13,7 +16,7 @@ export default function StateControls() {
     };
 
     return (
-        <div>
+        <div className="buttonsrow buttonsrow-narrow">
             <button className="button-unknown" onClick={() => updateModels(ModelState.Unknown)}>Unknown</button>
             <button className="button-packaged" onClick={() => updateModels(ModelState.Packaged)}>Packaged</button>
             <button className="button-assembled" onClick={() => updateModels(ModelState.Assembled)}>Assembled</button>

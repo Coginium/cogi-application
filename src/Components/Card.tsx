@@ -1,19 +1,8 @@
 import { ReactNode } from "react";
 import { Link } from "react-router-dom";
+import { BadgeProps } from "./Badge";
+import Badges from "./Badges";
 import './Card.css';
-
-export interface CardBadgeProps {
-
-    /**
-     *  The text of the badge that should be displayed with the card
-     */
-    text:string;
-
-    /**
-     *  The color of the badge that should be used.
-     */
-    color:string;
-};
 
 export interface CardProps {
 
@@ -52,7 +41,7 @@ export interface CardProps {
     /**
      *  An array of possible badges for the item.
      */
-    badges?:Array<CardBadgeProps>;
+    badges?:Array<BadgeProps>;
 
     /**
      *  The content of the card.
@@ -86,8 +75,11 @@ export default function Card(props:CardProps) {
         // @todo do we need a state here?
     };
 
+    const cardCSS = [ 'card' ];
+    if (props.image) cardCSS.push('card-withside');
+
     return (
-        <div className="card">
+        <div className={cardCSS.join(' ')}>
             {props.image && (<img className="card-image" src={props.image} alt=''/>)}
             <div className="card-title">
                 {selectable && (<input type="checkbox" onChange={onCheckboxChange} checked={props.selected || false}/>)}
@@ -95,9 +87,7 @@ export default function Card(props:CardProps) {
                 {!props.url && (<span>{props.title}</span>)}
             </div>
             <div>
-                {props.badges && (<div>
-                    {props.badges.map((badge:CardBadgeProps) => (<span className="card-badge" style={{ backgroundColor: badge.color }}>{badge.text}</span>))}
-                </div>)}
+                {props.badges && (<Badges badges={props.badges}/>)}
                 {props.children}
             </div>
         </div>

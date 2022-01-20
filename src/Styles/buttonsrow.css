@@ -1,0 +1,21 @@
+.buttonsrow
+{
+    display:        grid;
+    grid-auto-flow: column;
+    gap:            4px;
+}
+
+.buttonsrow.buttonsrow-narrow
+{
+    gap:            0px;
+}
+
+.buttonsrow.buttonsrow-narrow > button
+{
+    border:         1px solid black;
+}
+
+.buttonsrow.buttonsrow-narrow > button:not(:first-child)
+{
+    border-left:    none;
+}
