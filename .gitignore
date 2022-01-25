@@ -1,6 +1,9 @@
 # the node modules. No need to store them in the repo
 node_modules
 
+# the build-optimized directory
+build
+
 # the cypress output
 cypress/screenshots
 cypress/support
