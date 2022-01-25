@@ -21,7 +21,7 @@ const removeReducer:RemoveReducer = (state:Array<Model>, payload:PayloadAction<M
     return state.filter((value:Model) => value.id !== payload.payload.id);
 };
 
-const selectedModelsSlide = createSlice<Model[], SliceCaseReducers<Model[]>>({
+const selectedModelsSlice = createSlice<Model[], SliceCaseReducers<Model[]>>({
     name: 'selectedModels',
     initialState: [],
     reducers: {
@@ -31,8 +31,6 @@ const selectedModelsSlide = createSlice<Model[], SliceCaseReducers<Model[]>>({
     }
 });
 
-export const { clear, add, remove } = selectedModelsSlide.actions;
-
+export const { clear, add, remove } = selectedModelsSlice.actions;
 export const selectSelected = (state:RootState) => state.selectedModels;
-
-export default selectedModelsSlide.reducer;
+export default selectedModelsSlice.reducer;
