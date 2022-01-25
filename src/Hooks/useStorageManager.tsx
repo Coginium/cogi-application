@@ -9,11 +9,15 @@ export default function useStorageManager() {
 
     useEffect(() => {
 
-        let isMonted = true;
+        let isMounted = true;
 
-        navigator.storage.persisted().then((result:boolean) => { isMonted && setPersisted(result); });
+        navigator.storage.persisted().then((result:boolean) => {
 
-        return () => { isMonted = true; };
+            return result ? Promise.resolve(result) : navigator.storage.persist();
+
+        }).then((result:boolean) => void isMounted && setPersisted(result));
+
+        return () => { isMounted = true; };
 
     }, [ persisted, setPersisted ]);
 

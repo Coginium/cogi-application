@@ -16,7 +16,7 @@ export default function useCollection() {
 
         let isMounted = true;
 
-        if (collection === null) fetchModels().then((models:Array<Model>) => { isMounted && setCollection(models); });
+        if (collection === null) fetchModels().then((models:Array<Model>) => { isMounted && setCollection(models.sort((a:Model, b:Model) => a.name.localeCompare(b.name))); });
 
         return () => { isMounted = false };
     }, [ collection, setCollection ]);
