@@ -21,7 +21,7 @@ export default function Actions() {
 
     return (
         <div className="buttonsrow">
-            <button disabled={selected.length > 0} onClick={removeModels}>Remove</button>
+            <button disabled={selected.length === 0} onClick={removeModels}>Remove</button>
         </div>
     );
 };
