@@ -5,4 +5,8 @@
     font-size:      .75em;
     color:          white;
     font-weight:    bold;
+
+    white-space:    nowrap;
+
+    border-radius:  2px;
 }

@@ -1,19 +1,17 @@
 import { Box } from "cogi-collectibles";
-import { useEffect, useState } from "react";
-import fetchCatalogue from "../Storage/fetchCatalogue";
+import { useSelector } from "react-redux";
+import useCatalogue from "../Hooks/useCatalogue";
 import Item from "./Item";
+import { query as querySlice } from "./querySlice";
 
 /**
  *  A component to show a list of available items in the whole products catalogue.
  */
 export default function List() {
 
-    const [ catalogue, setCatalogue ] = useState<Array<Box>>([]);
+    const query = useSelector(querySlice);
 
-    useEffect(() => {
-
-        fetchCatalogue().then(setCatalogue);
-    }, [ ]);
+    const { catalogue } = useCatalogue(query.keyword);
 
     return (
         <div className="cards cards-grid">

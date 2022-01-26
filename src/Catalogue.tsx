@@ -1,4 +1,5 @@
 import List from "./Catalogue/List";
+import Toolbar from "./Catalogue/Toolbar";
 
 /**
  *  This is a component that can be used to manage a catalogue of possible products:
@@ -13,6 +14,7 @@ export default function Catalogue() {
 
     return (
         <main className="maincontainer">
+            <Toolbar/>
             <List/>
         </main>
     );

@@ -29,6 +29,9 @@
   --model-state-painted:    #028090;
   --model-state-done:       #80AB82;
   --model-state-broken:     #D72638;
+
+  --badge-red:              #D72638dd;
+  --badge-black:            #2f2f2fdd;
 }
 
 @media screen and (min-width: 1000px)

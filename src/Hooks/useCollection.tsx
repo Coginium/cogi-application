@@ -10,20 +10,20 @@ import fetchModels from "../Storage/fetchModels";
  */
 export default function useCollection() {
 
-    const [ collection, setCollection ] = useState<Array<Model>|null>(null);
+    const [ collection, setCollection ] = useState<Array<Model>|undefined>();
 
     useEffect(() => {
 
         let isMounted = true;
 
-        if (collection === null) fetchModels().then((models:Array<Model>) => { isMounted && setCollection(models.sort((a:Model, b:Model) => a.name.localeCompare(b.name))); });
+        if (collection === undefined) fetchModels().then((models:Array<Model>) => { isMounted && setCollection(models.sort((a:Model, b:Model) => a.name.localeCompare(b.name))); });
 
         return () => { isMounted = false };
     }, [ collection, setCollection ]);
 
     useEffect(() => {
 
-        const cancelListener = listen('models', () => setCollection(null));
+        const cancelListener = listen('models', () => setCollection(undefined));
 
         return () => cancelListener();
     }, [])

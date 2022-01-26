@@ -10,10 +10,32 @@ import { Box, buildBox } from 'cogi-collectibles';
  */
 const fetch : () => Promise<Array<Box>> = (() => {
 
-    let spaceMarinesPromise = import('cogi-catalogue-gw/space-marines-boxes.json').then((data:any) => { return data.default as Array<Partial<Box>>; }).then((input:Array<Partial<Box>>) => input.map(buildBox));
+    let cataloguePromise = import('cogi-catalogue-gw/package.json').then((data:any) => {
+
+        const dataFiles = data.default.datafiles;
+
+        const separated:Promise<Array<Box[]>> = Promise.all(dataFiles.map((file:string) => {
+
+            return import(`cogi-catalogue-gw/${file}`).then((data:any) => {
+
+                console.log(data.default);
+
+                return data.default as Partial<Box>[];
+
+            }).then((input:Partial<Box>[]) => input.map(buildBox));
+        }));
+        
+        return separated.then((inputs:Array<Box[]>) => {
+
+            const result:Box[] = [];
+
+            return result.concat(...inputs);
+        });
+
+    });
 
     return () => {
-        return spaceMarinesPromise;
+        return cataloguePromise;
     };
 })();
 

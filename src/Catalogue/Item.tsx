@@ -1,19 +1,32 @@
 import { Box } from "cogi-collectibles";
 import { Link } from "react-router-dom";
+import { BadgeProps } from "../Components/Badge";
 import Card from "../Components/Card";
 
 export interface ItemProps {
+
+    /**
+     *  The object describing a box.
+     */
     box:Box;
 };
 
+/**
+ *  The component showing one item in the catalogue list.
+ */
 export default function Item(props:ItemProps) {
 
     const box = props.box;
 
-    const badges = [
-        { text: box.availability, color: 'black' },
-        { text: `${box.models.length} models`, color: 'black' }
+    let badges = [
+        { text: box.availability, color: 'var(--badge-black)' },
+        { text: `${box.models.length} models`, color: 'var(--badge-black)' }
     ];
+
+    badges = badges.concat(...props.box.tags.map((tag:string) : BadgeProps => {
+
+        return { text: tag, color: 'var(--badge-red)' };
+    }));
 
     return (
         <Card
