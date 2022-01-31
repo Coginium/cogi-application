@@ -21,7 +21,26 @@ export default function useStorageManager() {
 
     }, [ persisted, setPersisted ]);
 
+    const request = () => {
+
+        navigator.storage.persisted().then((result:boolean) => {
+
+            return result ? Promise.resolve(result) : navigator.storage.persist();
+
+        }).then((result:boolean) => setPersisted(result));
+    };
+
     return {
-        persisted: !!persisted
+
+        /**
+         *  Is the browser using persistent storage?
+         */
+        persisted: !!persisted,
+
+        /**
+         *  A function to request persistent storage. This should be working when wrapped
+         *  in an user action.
+         */
+        request
     };
 };

@@ -7,12 +7,13 @@ import './SnackNotification.css';
  */
 export default function SnackNotification() {
 
-    const { persisted } = useStorageManager();
+    const { persisted, request } = useStorageManager();
 
     return (
         <>
             {!persisted && (<div className="frame-snacknotification">
                 The application is not granted persisten storage. All changes will be wiped out when closed.
+                <button onClick={request}>Allow persistent storage</button>
             </div>)} 
         </>
     );
