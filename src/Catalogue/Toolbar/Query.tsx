@@ -20,7 +20,7 @@ export default function() {
 
     return (
         <div>
-            <input type="text" value={query.keyword} onChange={onChange} placeholder="Search query..."/>
+            <input type="text" defaultValue={query.keyword} onChange={onChange} placeholder="Search query..."/>
         </div>
     );
 };

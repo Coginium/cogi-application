@@ -1,8 +1,6 @@
-import { Box } from "cogi-collectibles";
+import { Box, matchBox } from "cogi-collectibles";
 import { useEffect, useState } from "react";
 import fetchCatalogue from "../Storage/fetchCatalogue";
-
-
 
 /**
  *  A custom hook to get a catalogue (or its part).
@@ -15,18 +13,18 @@ export default function useCatalogue(keyword:string = '') {
 
         let isMounted = true;
 
-        if (catalogue === undefined) fetchCatalogue().then((catalogue:Box[]) => {
+        fetchCatalogue().then((catalogue:Box[]) => {
 
             if (!isMounted) return;
 
             if (!keyword) return setCatalogue(catalogue);
 
-            
+            setCatalogue(catalogue.filter((box:Box) => matchBox(keyword, box)));
         });
 
         return () => { isMounted = false; }
 
-    }, [ catalogue, setCatalogue ]);
+    }, [ setCatalogue, keyword ]);
 
     return {
         catalogue: catalogue || []
