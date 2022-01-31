@@ -1,0 +1,2 @@
+(this["webpackJsonpcogi-application"]=this["webpackJsonpcogi-application"]||[]).push([[8],{67:function(i,a,p){"use strict";p.r(a),a.default=p.p+"static/media/README.233190ea.md"}}]);
+//# sourceMappingURL=8.9ab7a214.chunk.js.map

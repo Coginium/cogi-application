@@ -1,6 +1,9 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Cogisphere",
+  "name": "Cogisphere",
+  "description": "An application to manage your wargaming collection",
+  "version": "1.0.0",
+  "manifest_version": 2,
   "icons": [
     {
       "src": "favicon.ico",
@@ -20,6 +23,7 @@
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "theme_color": "#4166F5",
+  "background_color": "#ffffff",
+  "prefer_related_applications": false
 }
