@@ -33,7 +33,8 @@
     "deploy": "gh-pages -d build",
     "test": "cypress run-ct",
     "open-test": "cypress open-ct",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "electron": "electron ./electron/main.js"
   },
   "eslintConfig": {
     "extends": [
