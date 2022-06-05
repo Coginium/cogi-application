@@ -1,7 +1,6 @@
 import { Box } from "cogi-collectibles";
-import { Link } from "react-router-dom";
-import { BadgeProps } from "../Components/Badge";
-import Card from "../Components/Card";
+import { BadgeProps, Badges, Color, Card } from "cogi-uikit";
+import { useNavigate } from "react-router-dom";
 
 export interface ItemProps {
 
@@ -16,24 +15,26 @@ export interface ItemProps {
  */
 export default function Item(props:ItemProps) {
 
+    const navigate = useNavigate();
+
     const box = props.box;
 
-    let badges = [
-        { text: box.availability, color: 'var(--badge-black)' },
-        { text: `${box.models.length} models`, color: 'var(--badge-black)' }
+    let badges : BadgeProps[] = [
+        { label: box.availability, color: Color.dark },
+        { label: `${box.models.length} models`, color: Color.dark }
     ];
 
-    badges = badges.concat(...props.box.tags.map((tag:string) : BadgeProps => {
-
-        return { text: tag, color: 'var(--badge-red)' };
-    }));
+    badges = badges.concat(...props.box.tags.map((tag:string) : BadgeProps => (
+        { label: tag, color: Color.red }
+    )));
 
     return (
         <Card
             title={box.name}
-            badges={badges}
+            actionTitle="To collection"
+            onAction={() => { navigate(`/new-model/box/${props.box.id}`) }}
         >
-            <Link to={`/new-model/box/${props.box.id}`}><button>To collection</button></Link>
+            <Badges badges={badges}/>
         </Card>
     );
 };

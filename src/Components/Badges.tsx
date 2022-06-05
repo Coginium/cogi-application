@@ -1,5 +1,6 @@
-import Badge, { BadgeProps } from "./Badge";
+import Badge, { BadgeProps } from './Badge';
 import './Badges.css';
+
 export interface BadgesProps {
 
     /**

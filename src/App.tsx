@@ -1,5 +1,6 @@
 import './Styles.css';
 import './App.css';
+import 'cogi-uikit/styles.css';
 import Collection from './Collection';
 import { Provider as ReduxProvider } from 'react-redux'; 
 import store from './Store';

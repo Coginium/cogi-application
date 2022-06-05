@@ -1,13 +1,13 @@
 import { Outlet } from "react-router-dom";
 import Header from "./Frame/Header";
-import SnackNotification from "./Frame/SnackNotification";
+import { Badge } from "cogi-uikit";
 
 export default function Frame() {
     return (
         <>
             <Header/>
             <Outlet/>
-            <SnackNotification/>
+            <Badge label="test"/>
         </>
     )
 };
